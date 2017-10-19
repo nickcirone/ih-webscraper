@@ -8,6 +8,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 /*
+ * ih-webscraper
  * Class to extract data from a single webpage. Written by Nicholas Cirone,
  * 10/19/17 - For Industry Hub - diversitypolicy.com
  */
