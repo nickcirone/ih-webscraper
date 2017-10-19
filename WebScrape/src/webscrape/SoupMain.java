@@ -1,6 +1,7 @@
 package webscrape;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -13,16 +14,16 @@ import org.jsoup.select.Elements;
  * 10/19/17 - For Industry Hub - diversitypolicy.com
  */
 
-public class SinglePageSoup {
+public class SoupMain {
 
   public static void main(String[] args) throws IOException {
-    // TODO Auto-generated method stub
-    Document doc = Jsoup.connect("http://diversity.unc.edu/resources/best/").timeout(6000)
-        .get();
-    Elements elements = doc.select("div.panel-body");
-    for (Element currentDiv : elements) {
-
+	  
+    SinglePageParser currentPage = new SinglePageParser("http://diversity.unc.edu/resources/best/");
+    ArrayList<String> listItems = currentPage.getListItems("div.panel-body");
+    for (String curr: listItems) {
+    	System.out.println(curr);
     }
+    
   }
 
 }
