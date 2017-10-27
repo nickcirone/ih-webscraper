@@ -10,6 +10,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+
 /*
  * ih-webscraper
  * Parses a single url and returns ArrayList<String>'s of web page's text data using method specified tags 
@@ -26,13 +27,13 @@ public class SinglePageParser {
 		_webDoc = Jsoup.connect(page_url).timeout(10000).get();
 	}
 	
-	public String getPageUrl() {
+	protected String getPageUrl() {
 		return _pageUrl;
 	}
 	
 	// Methods to return ArrayLists of List Items : with varying degrees of specificity 
 	
-	public ArrayList<String> getListItems() {
+	protected ArrayList<String> getListItems() {
 		Elements rawListItems = _webDoc.select("li");
 		ArrayList<String> liArrList = new ArrayList<String>();
 	    for (Element currentLi : rawListItems) {
@@ -44,7 +45,7 @@ public class SinglePageParser {
 	
 	// Specify the markup tags from which you want to extract li's
 	
-	public ArrayList<String> getListItems(String tag_specify) {
+	protected ArrayList<String> getListItems(String tag_specify) {
 		Elements specifiedElements = _webDoc.select(tag_specify);
 		Elements rawListItems = specifiedElements.select("li");
 		ArrayList<String> liArrList = new ArrayList<String>();
@@ -57,7 +58,7 @@ public class SinglePageParser {
 	
 	// double specify 
 	
-	public ArrayList<String> getListItems(String tag_specify1, String tag_specify2) {
+	protected ArrayList<String> getListItems(String tag_specify1, String tag_specify2) {
 		Elements specifiedElements1 = _webDoc.select(tag_specify1);
 		Elements specifiedElements2 = specifiedElements1.select(tag_specify2);
 		Elements rawListItems = specifiedElements2.select("li");
@@ -71,7 +72,7 @@ public class SinglePageParser {
 	
 	// Methods to return ArrayLists of paragraphs : with varying degrees of specificity
 	
-	public ArrayList<String> getParagraphs() {
+	protected ArrayList<String> getParagraphs() {
 		Elements rawParagraphs = _webDoc.select("p");
 		ArrayList<String> paraArrList = new ArrayList<String>();
 		for (Element currentP : rawParagraphs) {
