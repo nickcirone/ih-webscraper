@@ -83,7 +83,7 @@ public class SinglePageParser {
 	
 	// single specify
 	
-	public ArrayList<String> getParagraphs(String tag_specify) {
+	protected ArrayList<String> getParagraphs(String tag_specify) {
 		Elements specifiedElements = _webDoc.select(tag_specify);
 		Elements rawParagraphs = specifiedElements.select("p");
 		ArrayList<String> paraArrList = new ArrayList<String>();
@@ -96,7 +96,7 @@ public class SinglePageParser {
 	
 	// double specify 
 	
-	public ArrayList<String> getParagraphs(String tag_specify1, String tag_specify2) {
+	protected ArrayList<String> getParagraphs(String tag_specify1, String tag_specify2) {
 		Elements specifiedElements = _webDoc.select(tag_specify1);
 		Elements specifiedElements2 = specifiedElements.select(tag_specify2);
 		Elements rawParagraphs = specifiedElements2.select("p");
@@ -110,7 +110,7 @@ public class SinglePageParser {
 	
 	// Returns an ArrayList of all links on current webpage : if the link begins with http
 	
-	public ArrayList<String> getLinks() {
+	protected ArrayList<String> getLinks() {
 		Elements rawLinks = _webDoc.select("a");
 		ArrayList<String> linkArrList = new ArrayList<String>();
 		for (Element currentLink : rawLinks) {
@@ -125,7 +125,7 @@ public class SinglePageParser {
 	
 	// Returns an ArrayList of all headers on current webpage
 	
-	public ArrayList<String> getHeaders() {
+	protected ArrayList<String> getHeaders() {
 		ArrayList<String> headArrList = new ArrayList<String>();
 		for (int i = 1; i <= 6; i++) {
 			Elements rawHeaders = _webDoc.select("h" + i);	
@@ -140,7 +140,7 @@ public class SinglePageParser {
 	// Returns headers of certain weight, i.e. h2 has weight 2, h3 has weight 3 and so on
 	// Returns null ArrayList if weight is < 1 or > 6
 	
-	public ArrayList<String> getHeaders(int weight) {
+	protected ArrayList<String> getHeaders(int weight) {
 		ArrayList<String> headArrList = new ArrayList<String>();
 		if (weight >= 1 && weight <= 6) {
 			Elements rawHeaders = _webDoc.select("h" + weight);		
@@ -154,7 +154,7 @@ public class SinglePageParser {
 	
 	// Returns an ArrayList of the current webpage's title
 	
-	public ArrayList<String> getTitle() {
+	protected ArrayList<String> getTitle() {
 		Elements rawTitles = _webDoc.select("title");
 		ArrayList<String> titleArrList = new ArrayList<String>();
 		for (Element currentTitle : rawTitles) {
