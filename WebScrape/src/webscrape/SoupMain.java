@@ -21,20 +21,18 @@ public class SoupMain {
       SinglePageParser academicsPage = new SinglePageParser("http://www.unc.edu/academics/");
       SinglePageParser divTestPage = new SinglePageParser("http://diversity.arizona.edu/diversity-policies-statements");
       SinglePageParser acadTestPage = new SinglePageParser("https://college.harvard.edu/academics");
-    //ArrayList<String> listItems = currentPage.getListItems("div.panel-body");
-    //ArrayList<String> headItems = currentPage.getTitle();
-    //ArrayList<String> paraItems = secondPage.getParagraphs();
-      TextWebPage diversityTextPage = new TextWebPage(diversityPage);
-      TextWebPage campusRecTextPage = new TextWebPage(campusRecPage);
-      TextWebPage academicsTextPage = new TextWebPage(academicsPage);
-      TextWebPage divTestTextPage = new TextWebPage(divTestPage);
-      TextWebPage acadTestTextPage = new TextWebPage(acadTestPage);
+      //ArrayList<String> listItems = currentPage.getListItems("div.panel-body");
+      //ArrayList<String> headItems = currentPage.getTitle();
+      //ArrayList<String> paraItems = secondPage.getParagraphs();
+
+
+
       //System.out.println(diversityTextPage.textToSingleString());
       Classifier<String, String> bayes = new BayesClassifier<String, String>();
 
-      ArrayList<String> diversitySample = diversityTextPage.getAllText();
-      ArrayList<String> campusRecSample = campusRecTextPage.getAllText();
-      ArrayList<String> academicsSample = academicsTextPage.getAllText();
+      ArrayList<String> diversitySample = diversityPage.getFullText();
+      ArrayList<String> campusRecSample = campusRecPage.getFullText();
+      ArrayList<String> academicsSample = academicsPage.getFullText();
 
       bayes.setMemoryCapacity(2500);
 
@@ -43,8 +41,8 @@ public class SoupMain {
       bayes.learn("academics", academicsSample);
 
 
-      System.out.println(bayes.classify(divTestTextPage.getAllText()).getCategory());
-      System.out.println(bayes.classify(acadTestTextPage.getAllText()).getCategory());
+      System.out.println(bayes.classify(divTestPage.getFullText()).getCategory());
+      System.out.println(bayes.classify(acadTestPage.getFullText()).getCategory());
 
 
 
