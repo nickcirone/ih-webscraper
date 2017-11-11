@@ -2,7 +2,6 @@ package webscrape;
 
 import java.io.IOException;
 
-
 import java.util.*;
 
 import org.jsoup.Jsoup;
@@ -111,6 +110,12 @@ public class SinglePageParser {
 
     protected String getPageUrl() {
         return _pageUrl;
+    }
+
+    // Returns the date that the current page was parsed
+
+    protected Date getDateAccessed() {
+	    return _dateAccessed;
     }
 
     // Returns ArrayList<String> of titles on page
